@@ -31,7 +31,6 @@ export class CourseController {
     },
   })
   async findAll(): Promise<Course[]> {
-    console.log('entrou no find all')
     const courses = await this.courseService.findAll() 
     if(courses.length===0){
       throw new NotFoundException('Nenhum curso encontrado.')
