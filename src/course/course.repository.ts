@@ -11,9 +11,7 @@ export class CourseRepository {
 
   async findAll(): Promise<any> {
     try {
-      console.log('entrou no try')
       const result = await this.courseModel.find().lean().exec();
-      console.log(result)
       return result
     } catch (error) {
       throw new NotFoundException('Courses not found');

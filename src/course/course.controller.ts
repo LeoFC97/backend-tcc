@@ -5,6 +5,7 @@ import { ApiNotFoundResponse, ApiOkResponse, ApiResponse, ApiTags } from '@nestj
 import { Course } from './schemas/course.schema'
 import { CourseDTO } from './dto/list-course.dto'
 import { NotFoundError } from 'rxjs'
+import { NoneCourseWasFound } from '../common/constants/error.message'
 
 @Controller('course')
 @ApiTags('Course')
@@ -32,9 +33,12 @@ export class CourseController {
   })
   async findAll(): Promise<Course[]> {
     console.log('entrou no find all')
-    const courses = await this.courseService.findAll() 
+    const courses = await this.courseService.findAll()
+    console.log('courses') 
+    console.log(courses) 
+    console.log('courses') 
     if(courses.length===0){
-      throw new NotFoundException('Nenhum curso encontrado.')
+      throw new NotFoundException(NoneCourseWasFound)
     }
     return courses
   }
