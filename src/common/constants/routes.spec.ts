@@ -4,16 +4,12 @@ describe('Routes', () => {
   it('should be equal', () => {
     expect(routes).toEqual([
       { path: '/healthcheck' },
-      { path: '/bank' },
+      { path: '/class' },
       { path: '/user' },
-      { path: '/tax' },
-      { path: '/address' },
-      { path: '/icon' },
-      { path: '/duration' }
     ])
   })
 
   it('should be equal in count of items', () => {
-    expect(routes.length).toEqual(7)
+    expect(routes.length).toEqual(2)
   })
 })
