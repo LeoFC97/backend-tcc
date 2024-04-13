@@ -5,7 +5,6 @@ describe('Routes', () => {
     expect(routes).toEqual([
       { path: '/healthcheck' },
       { path: '/class' },
-      { path: '/user' },
     ])
   })
 

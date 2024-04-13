@@ -22,23 +22,4 @@ export class CourseRepository {
     const courseCreated = await this.courseModel.create(courseToBeCreated)
     return courseCreated.toObject()
   }
-  // async findOne(id: string): Promise<Course> {
-  //   try {
-  //     const course = await this.courseModel.findById(id).exec();
-  //     if (!course) {
-  //       throw new NotFoundException(`Course with ID '${id}' not found`);
-  //     }
-  //     return course;
-  //   } catch (error) {
-  //     console.log('error')
-  //     console.log(error)
-  //     console.log('error')
-  //     // If error is due to invalid format of 'id', it's a bad request
-  //     // Otherwise, rethrow the original error
-  //     if (error.kind === 'ObjectId') {
-  //       throw new NotFoundException(`Course with ID '${id}' not found`);
-  //     }
-  //     throw error; // Rethrow the original error if it's not related to ObjectId
-  //   }
-  // }
 }
