@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException } from '@nestjs/common'
+import { ApiNotFoundResponse, ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { NotFoundError } from 'rxjs'
 import { CourseService } from './course.service'
 import { CreateCourseDto } from './dto/create-course.dto'
-import { ApiNotFoundResponse, ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { Course } from './schemas/course.schema'
 import { CourseDTO } from './dto/list-course.dto'
-import { NotFoundError } from 'rxjs'
 
 @Controller('course')
 @ApiTags('Course')
@@ -22,17 +22,17 @@ export class CourseController {
   // }
 
   @Get()
-  @ApiOkResponse({ type: CourseDTO})
+  @ApiOkResponse({ type: CourseDTO })
   @ApiNotFoundResponse({
     content: {
       'application/json': {
-        example: { error: 'Nenhum curso encontrado.' },
-      },
-    },
+        example: { error: 'Nenhum curso encontrado.' }
+      }
+    }
   })
   async findAll(): Promise<Course[]> {
-    const courses = await this.courseService.findAll() 
-    if(courses.length===0){
+    const courses = await this.courseService.findAll()
+    if (courses.length === 0) {
       throw new NotFoundException('Nenhum curso encontrado.')
     }
     return courses

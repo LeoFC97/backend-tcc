@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsString, Validate, ValidateNested } from 'class-validator'
-import { CreateSubjectDto } from '../../subject/dto/create-subject.dto'
 import { Type } from 'class-transformer'
+import { CreateSubjectDto } from '../../subject/dto/create-subject.dto'
 
 export class CreateWeekDayDto {
   @ApiProperty({

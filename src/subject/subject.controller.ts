@@ -1,12 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { SubjectService } from './subject.service'
 import { CreateSubjectDto } from './dto/create-subject.dto'
 import { UpdateSubjectDto } from './dto/update-subject.dto'
-import { ApiTags } from '@nestjs/swagger'
 
 @Controller('subject')
 @ApiTags('Subject')
-
 export class SubjectController {
   constructor(private readonly subjectService: SubjectService) {}
 
@@ -16,7 +15,7 @@ export class SubjectController {
   }
 
   @Get()
-  async findAll()  {
+  async findAll() {
     return this.subjectService.findAll()
   }
 

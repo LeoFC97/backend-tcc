@@ -4,7 +4,6 @@ import { Model } from 'mongoose'
 import { Course, CourseDocument } from './schemas/course.schema'
 import { CreateCourseDto } from './dto/create-course.dto'
 
-
 @Injectable()
 export class CourseRepository {
   constructor(@InjectModel(Course.name) private courseModel: Model<CourseDocument>) {}
@@ -12,11 +11,11 @@ export class CourseRepository {
   async findAll(): Promise<any> {
     try {
       console.log('entrou no try')
-      const result = await this.courseModel.find().lean().exec();
+      const result = await this.courseModel.find().lean().exec()
       console.log(result)
       return result
     } catch (error) {
-      throw new NotFoundException('Courses not found');
+      throw new NotFoundException('Courses not found')
     }
   }
 
