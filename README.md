@@ -1,11 +1,5 @@
 # Facilita Bancos Api
 
-## Environments
-
-- DEV - https://dfacilita-bancos-api.produto-financeiro.grupoboticario.digital
-- HML - https://hfacilita-bancos-api.produto-financeiro.grupoboticario.digital
-- PRD - https://facilita-bancos-api.produto-financeiro.grupoboticario.digital
-
 ## Getting Started
 
 Copy env file for local development
