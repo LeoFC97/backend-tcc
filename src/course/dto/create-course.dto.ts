@@ -1,64 +1,64 @@
-import { Type } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsString, ValidateNested, IsArray } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer'
+import { IsEmail, IsNotEmpty, IsString, ValidateNested, IsArray } from 'class-validator'
+import { ApiProperty } from '@nestjs/swagger'
 
 class ContactDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  whatsapp: string;
+  whatsapp: string
 
   @ApiProperty()
   @IsString()
   @IsEmail()
   @IsNotEmpty()
-  email: string;
+  email: string
 }
 
 class TeacherDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @ApiProperty({ type: ContactDTO })
   @ValidateNested()
   @Type(() => ContactDTO)
-  contacts: ContactDTO;
+  contacts: ContactDTO
 }
 
 class SubjectDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  id: string;
+  id: string
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  description: string;
+  description: string
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  classroom: string;
+  classroom: string
 
   @ApiProperty({ type: TeacherDTO })
   @ValidateNested()
   @Type(() => TeacherDTO)
-  teacher: TeacherDTO;
+  teacher: TeacherDTO
 }
 
 class ClassDTO {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  startHour: string;
+  startHour: string
 
   @ApiProperty({ type: SubjectDTO })
   @ValidateNested()
   @Type(() => SubjectDTO)
-  subject: SubjectDTO;
+  subject: SubjectDTO
 }
 
 class PeriodDTO {
@@ -66,46 +66,46 @@ class PeriodDTO {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ClassDTO)
-  monday?: ClassDTO[];
+  monday?: ClassDTO[]
 
   @ApiProperty({ type: [ClassDTO], required: false })
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ClassDTO)
-  tuesday?: ClassDTO[];
+  tuesday?: ClassDTO[]
 
   @ApiProperty({ type: [ClassDTO], required: false })
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ClassDTO)
-  wednesday?: ClassDTO[];
+  wednesday?: ClassDTO[]
 
   @ApiProperty({ type: [ClassDTO], required: false })
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ClassDTO)
-  thursday?: ClassDTO[];
+  thursday?: ClassDTO[]
 
   @ApiProperty({ type: [ClassDTO], required: false })
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => ClassDTO)
-  friday?: ClassDTO[];
+  friday?: ClassDTO[]
 }
 
 export class CreateCourseDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  id: string;
+  id: string
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name: string
 
   @ApiProperty({ type: PeriodDTO, isArray: true })
   @ValidateNested()
   @Type(() => PeriodDTO)
-  periods: PeriodDTO[];
+  periods: PeriodDTO[]
 }

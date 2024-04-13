@@ -2,7 +2,6 @@ import { ApiProperty } from '@nestjs/swagger'
 import { IsString } from 'class-validator'
 
 export class CreateSubjectDto {
-  
   @ApiProperty({
     type: String,
     description: 'Name of subject',
@@ -29,7 +28,7 @@ export class CreateSubjectDto {
 
   @ApiProperty({
     type: String,
-    description: 'StartHour of subject, using HH:mm' ,
+    description: 'StartHour of subject, using HH:mm',
     example: '18:20'
   })
   @IsString()
